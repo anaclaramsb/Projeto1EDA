@@ -6,10 +6,10 @@ typedef struct Cliente { int cpf; //identificação da pessoa
                   } tCliente;
 
 typedef struct Guiche{ tCliente* inicio;
-                 int numElem;
+                 int numElem; //no de clientes atendidos em sequencia
                  int tempo; //tempo de atendimento em sequencia
                  int tempocorrido; //tempo entre descansos para ser adicionado um prox
-                 int sequencia; //no de clientes atendidos em sequencia
+                 int sequencia; 
                } tGuiche;
 
 
@@ -28,7 +28,8 @@ int tempoGuiche(tGuiche G); //retorna tempo do guiche
 bool insereNoGuiche(tGuiche* um, tGuiche* dois, tGuiche* tres, tGuiche* pri, int tipo, int prioridade, int cpf, int senha);
 //insere novos clientes
 
-bool botaoPanico(tGuiche* G);
+
+bool botaoPanico(tGuiche* panico, tGuiche* outro1, tGuiche* outro2, tGuiche* outro3);  //botão de panico, primeiro elemento o guiche em panico, demais entradas os outros guiches
 
 
 

@@ -26,7 +26,6 @@ void initGuiche(tGuiche* G){ //inicia Guiche
 	G->numElem = 0;
 	G->tempo = 0;
 	G->tempocorrido = 0;
-	G->sequencia = 0;
 	G -> inicio = NULL;
 }
 
@@ -108,6 +107,68 @@ else{
 	}
 	
 	return true;
+
+}
+
+bool botaoPanico(tGuiche* panico, tGuiche* outro1, tGuiche* outro2, tGuiche* outro3){
+tCliente* atual = panico->inicio;
+tCliente* aux;
+tGuiche* guiche;
+while(atual != NULL){
+
+	if(outro1->tempo < outro2->tempo){
+		if(outro1->tempo < outro3->tempo){
+			guiche = outro1;
+		}
+		else{
+			guiche = outro3;
+		}
+	}
+	else{
+		if(outro2->tempo < outro3->tempo){
+			guiche = outro2;
+		}
+		else{
+			guiche = outro3;
+		}
+	}
+
+	tCliente* ultimo = guiche->inicio;
+
+	if (ultimo == NULL)		// Lista Vazia
+		guiche->inicio = atual;	
+
+	else { 							// Lista nao Vazia
+
+		while (ultimo->prox != NULL)
+			ultimo = ultimo->prox;
+
+		ultimo->prox = atual;
+		atual->prox = NULL;
+		}
+
+		
+		guiche->numElem++;
+		guiche->tempo = guiche->tempo + atual->tipo;
+		guiche->tempocorrido = guiche->tempocorrido + atual->tipo;
+
+	if(guiche->numElem == X){ //limite de pessoas para descanso
+		guiche->numElem = 0;
+		guiche ->tempocorrido = 0;
+		guiche->tempo = guiche->tempo + 5; //tempo de pausa
+	}
+	else if(guiche->tempocorrido >= Y){ //limite de tempo para descanso
+		guiche->numElem = 0;
+		guiche ->tempocorrido = 0;
+		guiche->tempo = guiche->tempo + 5; //tempo de pausa
+	}
+		atual = atual->prox;
+		panico->inicio = atual;
+		
+}
+
+panico->tempo = 0;
+
 
 }
 

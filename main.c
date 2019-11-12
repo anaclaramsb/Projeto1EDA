@@ -50,8 +50,18 @@ int senha;
 	printf("GUICHE PRIORIDADE, tempo de espera: %d\n", tempoGuiche(PRIORIDADE));
 	imprimeGuiche(PRIORIDADE);
 
-	printf("Aperte qualquer tecla para continuar a cadastrar novas senhas ou x para sair\n");
+	printf("Envie qualquer tecla para continuar a cadastrar novas senhas ou x para sair\n");
 		scanf("%s", &sair);
 
 	}
+	botaoPanico(&DOIS, &UM, &TRES, &PRIORIDADE); //botão de panico, primeiro elemento o guiche em panico, demais entradas os outros guiches
+
+	printf("GUICHE UM, tempo de espera: %d\n", tempoGuiche(UM));
+	imprimeGuiche(UM);
+	printf("GUICHE DOIS, tempo de espera: %d\n", tempoGuiche(DOIS));
+	imprimeGuiche(DOIS);
+	printf("GUICHE TRES, tempo de espera: %d\n", tempoGuiche(TRES));
+	imprimeGuiche(TRES);
+	printf("GUICHE PRIORIDADE, tempo de espera: %d\n", tempoGuiche(PRIORIDADE));
+	imprimeGuiche(PRIORIDADE);
 }
